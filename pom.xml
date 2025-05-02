@@ -66,8 +66,10 @@
             <groupId>org.projectlombok</groupId>
             <scope>annotationProcessor</scope>
         </dependency>
-
-
+        <dependency>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+            <groupId>org.springframework.boot</groupId>
+        </dependency>
     </dependencies>
 
     <build>
@@ -77,9 +79,9 @@
                 <artifactId>flyway-maven-plugin</artifactId>
                 <version>10.15.0</version>
                 <configuration>
-                    <url>jdbc:mysql://localhost:3306/store_api?createDatabaseIfNotExist=true</url>
+                    <url>jdbc:mysql://localhost:3306/spring-api-starter?createDatabaseIfNotExist=true</url>
                     <user>root</user>
-                    <password>MyPassword!</password>
+                    <password>mysql</password>
                     <cleanDisabled>false</cleanDisabled>
                 </configuration>
             </plugin>
