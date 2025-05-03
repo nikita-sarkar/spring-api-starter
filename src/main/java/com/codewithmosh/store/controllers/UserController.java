@@ -1,5 +1,6 @@
 package com.codewithmosh.store.controllers;
 
+import com.codewithmosh.store.dtos.UserDTO;
 import com.codewithmosh.store.entities.User;
 import com.codewithmosh.store.repositories.UserRepository;
 import lombok.AllArgsConstructor;
@@ -20,20 +21,21 @@ public class UserController {
     private final UserRepository userRepository;
 
     @GetMapping
-    public Iterable<User> getAllUsers()
+    public List<UserDTO> getAllUsers()
     {
-        return userRepository.findAll();
+        return userRepository.findAll().stream().map(user -> new UserDTO(user.getId(), user.getName(), user.getEmail())).toList();
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<User> getUser(@PathVariable Long id)
+    public ResponseEntity<UserDTO> getUser(@PathVariable Long id)
     {
         var user = userRepository.findById(id).orElse(null);
         if(user == null){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         else{
-            return ResponseEntity.ok(user);
+            var userDTO = new UserDTO(user.getId(), user.getName(), user.getEmail());
+            return ResponseEntity.ok(userDTO);
         }
     }
 }
