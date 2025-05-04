@@ -7,6 +7,5 @@ import org.mapstruct.Mapping;
 
 @Mapper(componentModel = "spring")
 public interface UserMapper {
-    @Mapping(target = "createdAt", expression = "java(java.time.LocalDateTime.now())")
     UserDTO toDTO(User user);
 }

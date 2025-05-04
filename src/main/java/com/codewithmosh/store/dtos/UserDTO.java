@@ -13,17 +13,7 @@ import java.time.LocalTime;
 @AllArgsConstructor
 @Getter
 public class UserDTO {
-    @JsonProperty("user_id")
     private Long id;
-
     private String name;
-
-    @JsonIgnore
     private String email;
-
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String phoneNo;
-
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private LocalDateTime createdAt;
 }
